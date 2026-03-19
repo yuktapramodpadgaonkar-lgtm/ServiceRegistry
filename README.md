@@ -2,6 +2,15 @@
 
 A simple but functional service registry implementation for understanding service discovery in distributed systems.
 
+## ✅ Submission Checklist
+
+- GitHub repository with assignment code and updates
+- Mandatory flow implemented and documented (2 instances, discovery, random instance call)
+- Demo screenshots in [`DEMO_IMAGES.md`](DEMO_IMAGES.md)
+- Architecture diagram in [`assignment_architecture.md`](assignment_architecture.md)
+- Optional service mesh artifacts included (`mesh_client.py` and `k8s/mesh-client-pod.yaml`)
+- Step-by-step run instructions are documented in this README
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -246,6 +255,10 @@ This repo already implements the service registry. For the assignment, we add:
 - After both instances are up, `GET /discover/user-service` should return `count: 2`.
 - The client prints the randomly chosen instance `address`.
 - The client prints a JSON response from the chosen instance `GET {address}/ping`.
+
+### Demo Evidence and Run Guide
+- Demo screenshots are available in [`DEMO_IMAGES.md`](DEMO_IMAGES.md).
+- This README has been updated with step-by-step instructions on how to run the code for the assignment flow.
 
 ## 📡 API Endpoints
 
