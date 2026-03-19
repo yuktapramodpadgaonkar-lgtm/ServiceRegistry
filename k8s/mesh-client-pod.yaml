@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mesh-client
+  labels:
+    app: mesh-client
+spec:
+  restartPolicy: Never
+  containers:
+  - name: mesh-client
+    image: service-registry:latest
+    imagePullPolicy: Never
+    command: ["python", "mesh_client.py"]
+    env:
+    - name: TARGET_URL
+      value: "http://user-service:8001/ping"
+    - name: ITERATIONS
+      value: "6"
+    - name: SLEEP_S
+      value: "1"
+
+# Made with Bob
+

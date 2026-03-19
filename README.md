@@ -213,6 +213,40 @@ python example_service.py payment-service 8002
 python example_service.py demo
 ```
 
+## 🧪 Mandatory Assignment: Discovery + Random Instance Call
+
+This repo already implements the service registry. For the assignment, we add:
+- 2 running service instances of the *same* service name (e.g., `user-service`)
+- a client that calls the registry to discover instances
+- the client selects a random instance and calls an HTTP endpoint on it
+
+### What you should run (local)
+
+**Terminal 1: Start the registry**
+```powershell
+.\venv\Scripts\python.exe service_registry_improved.py
+```
+
+**Terminal 2: Start service instance #1**
+```powershell
+.\venv\Scripts\python.exe microservice_instance.py user-service 8001
+```
+
+**Terminal 3: Start service instance #2**
+```powershell
+.\venv\Scripts\python.exe microservice_instance.py user-service 8002
+```
+
+**Terminal 4: Run the discovery client (random call)**
+```powershell
+.\venv\Scripts\python.exe random_instance_client.py user-service
+```
+
+### Expected behavior
+- After both instances are up, `GET /discover/user-service` should return `count: 2`.
+- The client prints the randomly chosen instance `address`.
+- The client prints a JSON response from the chosen instance `GET {address}/ping`.
+
 ## 📡 API Endpoints
 
 ### 1. Register a Service

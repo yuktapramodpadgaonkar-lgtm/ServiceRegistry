@@ -18,13 +18,15 @@ spec:
       - name: user-service
         image: service-registry:latest
         imagePullPolicy: Never
-        command: ["python", "example_service.py"]
-        args: ["user-service", "$(POD_IP):8001"]
+        command: ["python", "microservice_instance.py"]
+        args: ["user-service", "8001"]
         env:
         - name: POD_IP
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name: REGISTRY_URL
+          value: "http://service-registry:5001"
         - name: PYTHONUNBUFFERED
           value: "1"
         ports:
@@ -67,13 +69,15 @@ spec:
       - name: payment-service
         image: service-registry:latest
         imagePullPolicy: Never
-        command: ["python", "example_service.py"]
-        args: ["payment-service", "$(POD_IP):8002"]
+        command: ["python", "microservice_instance.py"]
+        args: ["payment-service", "8002"]
         env:
         - name: POD_IP
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+        - name: REGISTRY_URL
+          value: "http://service-registry:5001"
         - name: PYTHONUNBUFFERED
           value: "1"
         ports:
